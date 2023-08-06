@@ -1,0 +1,158 @@
+.GrandParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+/* ==============================
+1-  OPIONS (filtered data)
+=================================*/
+.OPIONS {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.OPIONS button,
+.OPIONS select {
+  border: none;
+  background-color: rgb(43, 145, 241);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.OPIONS select {
+  padding: 5px 10px;
+  background-color: #666;
+}
+.OPIONS select option{
+  background-color: white;
+  color: black;
+}
+/* ==============================
+2- SHOW all tasks
+=================================*/
+.Tasks {
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  
+}
+
+.Tasks .OneTask {
+  border: violet solid 1.5px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: -10px;
+  width: 350px;
+  line-height: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 150px;
+  transition: 0.2s;
+  position: relative;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.Tasks .OneTask:hover{
+  border-left: 5px rgb(131, 32, 131) solid;
+  cursor: pointer;
+}
+.Tasks .OneTask h2{
+  font-size: 21px;
+  text-align: center;
+}
+.Tasks .OneTask li{
+  text-align: start;
+  list-style:circle;
+  list-style-position: inside;
+}
+.Tasks .OneTask p{
+  position:absolute;
+  right: 0;
+  bottom: 2px;
+  font-weight: bold;
+  margin: 7px;
+  color: blue;
+  cursor: pointer;
+}
+/* ==============================
+3- Add new task BTN
+=================================*/
+.btnVal{
+  margin-top: 15px;
+  border: none;
+  background-color: teal;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.btnVal:focus{
+  background-color: teal;
+}
+
+.addTask{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch; */
+  margin-top: 55px;
+  text-align: left;
+  height: 100%;
+}
+
+.alertmsg{
+  display: none;
+  background-color: rgba(245, 245, 245, 0.659);
+  padding: 7px 25px;
+  font-size: 22px;
+  box-shadow: 0px 0px 2px 2px black;
+  border-radius:10px ;
+  position: fixed;
+  right: 20px;
+  bottom: 550px;
+  transition: 1s;
+}
+.Show{
+  display: inline;
+  animation:ShowALert ease-in-out 1s;
+}
+.Hide{
+  display: inline;
+  transition: 1s;
+  transform: translateX(600px);
+}
+@keyframes ShowALert {
+  0%{
+    transform: translateX(600px);
+  }
+  50%{
+    transform: translateX(-25px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
+@keyframes HideALert {
+  0%{
+    transform: translateX(0px);
+  }
+  100%{
+    transform: translateX(600px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
