@@ -5,10 +5,10 @@ const Model = ({close,ClearModel,children}) => {
   return (
 
       <div className="ParentModal">
-        <form action="" id="forgetPsW" className={`forgetPsW`}>
+        <div  id="forgetPsW" className={`forgetPsW`}>
           <div className="close">
             <i
-              className="fa-solid  fa-xmark fa-lg iclose"
+              className="fa-solid  fa-xmark fa-sm iclose"
               onClick={() => {
                 close(false);
                 ClearModel();
@@ -25,7 +25,7 @@ const Model = ({close,ClearModel,children}) => {
           
           {children}
            
-        </form>
+        </div>
       </div>
   );
 };

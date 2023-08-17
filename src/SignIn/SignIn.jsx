@@ -16,6 +16,7 @@ import { auth } from "../Firebase/Config";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactLoading from "react-loading";
 const SignIn = () => {
   const [e, sete] = useState(" ");
 
@@ -24,9 +25,10 @@ const SignIn = () => {
   const [error, seterror] = useState(" ");
   const [eReset, seteReset] = useState("");
   const [Existe, setExiste] = useState(false);
+  const [LodingAnimate, setLodingAnimate] = useState(false);
   /*frogetPassword*/
   const [FrgPsw, setFrgPsw] = useState(false);
-
+  const ClearModel = () => {};
   const navigate = useNavigate();
   return (
     <div>
@@ -35,9 +37,9 @@ const SignIn = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <Header></Header>
-      <div className="mere">
+      <div className="mere Content">
         {FrgPsw && (
-          <ModalFrgPss close={setFrgPsw} >
+          <ModalFrgPss close={setFrgPsw} ClearModel={ClearModel}>
             <h4>Forget PassWord :</h4>
             <input
               required
@@ -55,7 +57,7 @@ const SignIn = () => {
                 eo.preventDefault();
                 // @ts-ignore
                 const Emailtxt = document.querySelector(".EmailTxt").value;
-                sendPasswordResetEmail(auth,eReset)
+                sendPasswordResetEmail(auth, eReset)
                   .then(() => {
                     // @ts-ignore
                     // if (Emailtxt.value) {
@@ -115,8 +117,9 @@ const SignIn = () => {
           <div>
             <button
               className="btnLogin btn btn-primary"
-              onClick={(eo) => {
-                signInWithEmailAndPassword(auth, e, p)
+              onClick={async (eo) => {
+                setLodingAnimate(true);
+                await signInWithEmailAndPassword(auth, e, p)
                   .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
@@ -128,10 +131,20 @@ const SignIn = () => {
                     const errorMessage = error.message;
                     seterror(errorCode);
                   });
+                setLodingAnimate(false);
               }}
               type="submit"
             >
-              Login
+              {LodingAnimate === true ? (
+                <ReactLoading
+                  type="spokes"
+                  color="gold"
+                  height={25}
+                  width={25}
+                />
+              ) : (
+                <span >Login</span>
+              )}
             </button>
 
             <h5>

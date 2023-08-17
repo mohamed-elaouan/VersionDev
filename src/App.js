@@ -4,8 +4,12 @@ import Categorie from "./Categorie";
 import Contact from "./Contact";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp";
-import Profil from "./Profil";
-import EditTask from "./EditTaskFile/EditTask";
+import Profil from "./Profil/Profil";
+//Dashboard 
+import ShowProblem from './Dashboard/ShowProblem.jsx';
+import AddNewAdmin from './Dashboard/AddNewAdmin.jsx';
+import Admins from './Dashboard/Admins';
+import Processing from './Dashboard/Proccesing';
 import NotFound from "./Error404";
 import { useContext } from "react";
 import ThemeProvider from "./Context/DataContext";
@@ -45,12 +49,33 @@ const router = createBrowserRouter([
     // @ts-ignore
     element: <Profil />,
     errorElement: <NotFound/>,
-  },{
-    path: "/TaskEdit/:id",
+  },
+  //Dashboard
+  {
+    path: "/ShowProblem",
     // @ts-ignore
-    element: <EditTask/>,
+    element: <ShowProblem />,
+    errorElement: <NotFound/>,
+  },
+  {
+    path: "/AddNewAdmin",
+    // @ts-ignore
+    element: <AddNewAdmin />,
+    errorElement: <NotFound/>,
+  },
+  {
+    path: "/Admins",
+    // @ts-ignore
+    element: <Admins/>,
+    errorElement: <NotFound/>,
+  },
+  {
+    path: "/Processing",
+    // @ts-ignore
+    element: <Processing/>,
     errorElement: <NotFound/>,
   }
+
 ]);
 
 function App() {

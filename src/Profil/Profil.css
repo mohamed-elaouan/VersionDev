@@ -1,0 +1,21 @@
+table tbody tr td {
+  width: 250px;
+}
+
+table tbody tr td p {
+  font-size: 19px;
+}
+
+table tbody tr {
+  line-height: 25px;
+}
+
+.ProContent {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: flex-start;
+}

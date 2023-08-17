@@ -56,7 +56,9 @@
   width: 226px;
   justify-content: space-around;
 }
-
+.Content{
+  min-height: 80vh;
+}
 
 @media only screen and (max-width: 700px) {
   .tete {
@@ -79,7 +81,7 @@
   }
 
   .Logo {
-    background-image: url("./Compenent/image-removebg-preview\ \(2\).png");
+    background-image: url("./Compenent/LogoTecc.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -170,12 +172,12 @@
 
 /* navbar */
 .Logo {
-  background-image: url("./Compenent/image-removebg-preview\ \(2\).png");
+  background-image: url("./Compenent/LogoTecc.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   margin-right: 103px;
 }
 
@@ -218,7 +220,7 @@
   display: flex;
   align-items: center;
   font-size: 18px;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
 }
@@ -229,7 +231,7 @@
     flex-wrap: wrap;
     flex-direction: column;
 }
-.txt {
+.txt,select.txt {
   background-color: rgb(218, 212, 212);
   padding: 10px 10px;
   width: 400px;

@@ -1,19 +1,30 @@
 import "../App.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../Compenent/Themes.css";
 import { useContext, useState, useTransition } from "react";
 import ThemeContext from "../Context/DataContext";
 //import "./MobileScreen.css";
-import { auth } from "../Firebase/Config";
+import { auth, db } from "../Firebase/Config";
+
+import { limit, where, deleteDoc, doc, deleteField } from "firebase/firestore";
+
 import { getAuth, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { collection, orderBy, query } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
   const { theme, CHANGE_theme } = useContext(ThemeContext);
   //translate
   const { t, i18n } = useTranslation();
+  //Acce de Admin:
+  const [Query, setQuery] = useState(query(collection(db, "Admins")));
+  const [Val] = useCollection(Query);
+
+  let Vall = false;
 
   const X = () => {
     const menu = document.querySelector(".bar");
@@ -54,26 +65,23 @@ const Header = () => {
           {user && (
             <div className="">
               <NavLink className="NavLink btnNav" aria-current="page" to="/">
-                {t("Home")}
+                {/* {t("Home")} */}
+                Home
               </NavLink>
             </div>
           )}
-          {user && (
-            <div className="">
-              <NavLink className="NavLink btnNav" to="/Categorie">
-                {t("Cat")}
-              </NavLink>
-            </div>
-          )}
+          
           {user && (
             <div className="">
               <NavLink className="NavLink btnNav" to="/Contact">
-                {t("Sup")}
+              {/* {i18n.language === "en" ? "Contact" : i18n.language === "fr"?"Contact":"المساعدة"} */}
+              Contact
               </NavLink>
             </div>
           )}
+          
           {/* Language */}
-          <div className="">
+          {/* <div className="">
             <div className="btnNav Langue">
               {t("Lang")}
               <ul className="ListLangue">
@@ -110,8 +118,8 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-          </div>
-
+          </div> */}
+          {/*Sign IN/UP*/}
           {!user && (
             <div className="NotUser">
               <NavLink className="NavLink btnNav btn btn-primary" to="/SignIn">
@@ -130,22 +138,26 @@ const Header = () => {
             <div className="">
               <div className="btnNav Langue">
                 <img
-                  src={ user.photoURL ? user.photoURL : "https://firebasestorage.googleapis.com/v0/b/elaouan-book-store.appspot.com/o/4x4.jpg?alt=media&token=2b31857e-75d4-4a0f-9b8c-050232bdcd2e" }
+                  src={
+                    user.photoURL
+                      ? user.photoURL
+                      : "https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png"
+                  }
                   width={40}
                   style={{ borderRadius: "50%" }}
                   height={40}
                 />
                 <ul className="ListProfil">
                   <li dir="auto">
-                    <a
+                    <Link
                       className="Pro"
-                      href="/Profil"
+                      to="/Profil"
                       style={{ textDecoration: "none" }}
                     >
                       {i18n.language === "ar" && <span>حسابي</span>}
                       {i18n.language === "en" && <span>Profile</span>}
                       {i18n.language === "fr" && <span>Profil</span>}
-                    </a>{" "}
+                    </Link>{" "}
                   </li>
                   <li dir="auto" className="bg-danger">
                     <a
@@ -167,9 +179,93 @@ const Header = () => {
                       {i18n.language === "fr" && <span>Déconnecté</span>}
                     </a>
                   </li>
-                  {user.email === "mohamedelaouan8@gmail.com" && (
+                  {/* {user.email === "mohamedelaouan8@gmail.com" && (
                     <li>eeeeee</li>
-                  )}
+                  )} */}
+                  {Val &&
+                    Val.docs.map((item, ind) => {
+                      if (
+                        item.data().email === user.email &&
+                        item.data().Type === "Admin"
+                      ) {
+                        Vall = true;
+                        return (
+                          <li dir="auto" key={ind}>
+                            <Link
+                              className="Pro"
+                              to="/ShowProblem"
+                              style={{ textDecoration: "none" }}
+                            >
+                              {i18n.language === "ar" && <span>الادارة</span>}
+                              {i18n.language === "en" && <span>Admin</span>}
+                              {i18n.language === "fr" && <span>Admin</span>}
+                            </Link>{" "}
+                          </li>
+                        );
+                      }
+                      if (
+                        item.data().email === user.email &&
+                        item.data().Type === "SuperAdmin"
+                      ) {
+                        Vall = true;
+                        return (
+                          <div key={ind}>
+                            <li dir="auto">
+                              <Link
+                                className="Pro"
+                                to="/ShowProblem"
+                                style={{ textDecoration: "none" }}
+                              >
+                                {i18n.language === "ar" && <span>الادارة</span>}
+                                {i18n.language === "en" && (
+                                  <span>Super Admin</span>
+                                )}
+                                {i18n.language === "fr" && (
+                                  <span>Super Admin</span>
+                                )}
+                              </Link>{" "}
+                            </li>
+                            <li dir="auto">
+                              <Link
+                                className="Pro"
+                                to="/Processing"
+                                style={{ textDecoration: "none" }}
+                              >
+                                {i18n.language === "ar" && <span>في طور المعالجة</span>}
+                                {i18n.language === "en" && (
+                                  <span>In Processing</span>
+                                )}
+                                {i18n.language === "fr" && (
+                                  <span>en traitement</span>
+                                )}
+                              </Link>{" "}
+                            </li>
+                          </div>
+                        );
+                      }
+                    })}
+                  {/* {Val.docs.map((item) => {
+                      if (
+                        item.data().email === user.email &&
+                        item.data().Type === "SuperAdmin"
+                      ) {
+                        Vall=true;
+                        return "Salam";
+                      }
+                    })} */}
+                  {/* {Vall && (
+                    <li dir="auto">
+                      <a
+                        className="Pro"
+                        href="/ShowProblem"
+                        style={{ textDecoration: "none" }}
+                      >
+                        {i18n.language === "ar" && <span>الادارة</span>}
+                        {i18n.language === "en" && <span>Admin</span>}
+                        {i18n.language === "fr" && <span>Admin</span>}
+                      </a>{" "}
+                    </li>
+                  )} */}
                 </ul>
               </div>
             </div>

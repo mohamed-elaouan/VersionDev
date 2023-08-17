@@ -1,7 +1,7 @@
-.ParentModal{
-  background-color: rgba(0, 0, 0, 0.508);
-  position: fixed ;
-  top:0;
+.ParentModal {
+  background-color: rgba(0, 0, 0, 0.429);
+  position: fixed;
+  top: 0;
   bottom: 0;
   right: 0;
   left: 0;
@@ -14,23 +14,24 @@
 .forgetPsW {
   flex-direction: column;
   align-items: center;
-  min-height: 300px;
-  height: 350px;
-  width: 470px;
+  min-height: 290px;
+  height: fit-content;
+  width: 500px;
   justify-content: center !important;
   margin-left: auto;
   margin-right: auto;
   background-color: whitesmoke;
-  border: 2px black solid;
+  border: 1px #777 solid;
   padding: 20px;
   display: flex;
   /* padding-top: 50px; */
-  border-radius: 17px;
+  border-radius: 14px;
   position: fixed;
-  animation:AnimateOpen ease-in-out 1s;
+  animation: AnimateOpen ease-in-out 1s;
   transition: all 0.1s;
   overflow: auto;
 }
+
 /* forgetPasseword */
 
 @keyframes AnimateOpen {
@@ -39,15 +40,18 @@
     scale: 0;
 
   }
-  50%{
+
+  50% {
     transform: translateY(-600px) rotate(250deg);
     scale: 0.4;
   }
+
   100% {
     transform: translateY(0px) rotate(360deg);
     scale: 1;
   }
 }
+
 @keyframes AnimateClose {
   0% {
     scale: 1;
@@ -85,8 +89,8 @@
 
 .close {
   position: absolute;
-  top: 17px;
-  right: 30px;
+  top: 8px;
+  right: 15px;
   background-color: transparent;
   font-size: 20px;
 }
@@ -96,7 +100,73 @@
   transform: rotate(-180deg);
   transition: 0.7s;
 }
-ul{
-  list-style:circle;
+
+ul {
+  list-style: circle;
   list-style-position: inside;
+}
+
+/*Alert*/
+.AlertMere {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AlertMsg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  justify-content: center !important;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 2px 2px violet;
+  padding: 10px;
+  /* padding-top: 50px; */
+  border-radius: 8px;
+  top: 11px;
+  position: fixed;
+  overflow: auto;
+}
+.AlertMsg.Display{
+  transition: 0.7s;
+  animation: Display ease-in-out 0.5s;
+}
+.AlertMere.Display{
+  display: flex;
+}
+.AlertMere.Hidden{
+  display: none;
+}
+.AlertMsg.Hidden{
+  transition: 0.7s;
+  animation: Hidden ease-in-out 0.5s;
+}
+@keyframes Display {
+  0% {
+    transform: translateY(-40px)
+  }
+  50%{
+    transform: translateY(10px)
+  }
+  100% {
+    transform: translateY(0px)
+  }
+}
+@keyframes Hidden {
+  0% {
+    transform: translateY(0px)
+  }
+  50%{
+    transform: translateY(10px)
+  }
+  100% {
+    transform: translateY(-40px)
+  }
 }

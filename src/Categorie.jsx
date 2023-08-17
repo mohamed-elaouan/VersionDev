@@ -18,7 +18,10 @@ const Categorie = () => {
           <link rel="canonical" href="https://www.tacobell.com/" />
         </Helmet>
         <Header></Header>
-        <h1>Categorie</h1>
+        <div className="Content">
+          <h1>Categorie</h1>
+        </div>
+        
         <Footer></Footer>
       </div>
     );

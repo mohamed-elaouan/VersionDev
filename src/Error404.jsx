@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 const Error404 = () => {
   return (
-    <div>
+    <div className="Content">
       <section className="page_404">
         <div className="container">
           <div className="row">

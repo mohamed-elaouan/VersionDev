@@ -1,0 +1,149 @@
+.Problem {
+  display: flex;
+  border-radius: 15px;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.OPIONS {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Filter {
+  width: 50%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.TrashPro{
+  position: relative fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+.Filter select {
+  background-color: #666;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding-inline: 5px;
+}
+.Tasks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Chercher {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Chercher input,
+.Chercher input:active,
+.Chercher input:focus,
+.Chercher input:hover {
+  border: none !important;
+  background: whitesmoke;
+  padding: 7px 15px;
+  color: black;
+  width: 250px;
+  border-radius: 7px;
+}
+
+.Chercher input::placeholder {
+  color: green;
+}
+
+.Chercher button {
+  padding: 7px 10px;
+}
+
+.information {
+  text-align: start;
+  max-width: 41%;
+  width: 440px;
+  margin-inline: 7px;
+  padding: 5px;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.Type {
+  position: absolute;
+  text-align: end;
+  bottom: 0;
+  left: 0;
+  right: 5px;
+}
+
+.Parent {
+  border-radius: 15px;
+  width: 95%;
+  margin-block: 15px;
+  box-shadow: 0px 0px 3px 3px whitesmoke;
+}
+
+.molProblem {
+  display: flex;
+  float: left;
+  width: 233px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-block: 5px;
+  padding-inline: 8px;
+  border-radius: 15px;
+  margin-left: 5px;
+  box-shadow: 0px 0px 3px 3px whitesmoke;
+}
+
+
+
+/* //Add new admin */
+
+
+.formNew{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* trash */
+.fa-trash-can{
+  color: black;
+  font-size: 15px;
+  transition: all 0.4s;
+}
+.fa-trash-can:hover{
+  transition: all 0.4s;
+  color: red;
+  scale: 1.1;
+  rotate: 17deg;
+}
+/*Processing */
+.fa-solid{
+  font-size: 27px;
+  transition: all 0.5ms;
+}
+.fa-circle-check:hover{
+  scale: 1.05;
+  color: green;
+}
+.fa-circle-xmark:hover{
+  scale: 1.05;
+  color: red;
+}
+.fa-trash:hover{
+  scale: 1.05;
+  color: rgb(188, 0, 0);
+}

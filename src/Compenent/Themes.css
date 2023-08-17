@@ -18,14 +18,27 @@
 .main.Dark .Pro,
 .main.Dark h3,
 .main.Dark li,
+.main.Dark legend,
 .main.Dark h4,
+.main.Dark h6,
+.main.Dark h5,
+.main.Dark td,
+.main.Dark th,
 .main.Dark .ListLangue li,
 .main.Dark .ListProfil li,
 .main.Dark p,
 .main.Dark .fa-pen-to-square,
-.main.Dark input[type="text"],
 .main.Dark Label {
   color: white;
+}
+.main.Dark .close{
+  color: gold;
+}
+.main.Dark .fa-trash{
+  color:  whitesmoke !important;
+}
+.main.Dark .fa-trash:hover{
+  color:  red !important;
 }
 .fa-pen-to-square:hover{
   transition: 0.2s;
@@ -47,14 +60,19 @@
   background-color: whitesmoke;
 }
 
-
+.main.Dark .forgetPsW {
+  background-color: rgb(52, 52, 52);
+}
 .main.Light h3,
-.main.Light input[type="text"]
+/*.main.Dark input[type="text"]*/
 .main.Light h1,
 .main.Light .ListLangue li,
 .main.Light .ListProfil li,
 .main.Light h2,
+.main.Light h6,
 .main.Light li,
+.main.Light legend,
+.main.Light h5,
 .main.Light .Pro,
 .main.Light h3,
 .main.Light h4,
@@ -314,7 +332,6 @@
   list-style: none;
   position: absolute;
   margin-top: 8px;
-  right: 96px;
   display: none;
   transition: 0.6s;
   width: 140px;
