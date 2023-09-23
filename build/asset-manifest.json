@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ac4ff06a.css",
+    "main.js": "/static/js/main.3fe7cf9d.js",
+    "static/media/LogoTecc.png": "/static/media/LogoTecc.d7e4d46a7776475bc2ab.png",
+    "index.html": "/index.html",
+    "main.ac4ff06a.css.map": "/static/css/main.ac4ff06a.css.map",
+    "main.3fe7cf9d.js.map": "/static/js/main.3fe7cf9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac4ff06a.css",
+    "static/js/main.3fe7cf9d.js"
+  ]
+}

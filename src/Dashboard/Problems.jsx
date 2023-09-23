@@ -21,7 +21,7 @@ import Alert from "Shared/Alert";
 //import 'moment-timezone';
 const Problems = ({ user, db }) => {
   //translate
-  const {  i18n } = useTranslation();
+  const { i18n } = useTranslation();
   //Alert
   const [AlertContt, setAlertContt] = useState(
     <b>
@@ -102,11 +102,9 @@ const Problems = ({ user, db }) => {
       )
       .then(
         (result) => {
-          console.log("success")
+          console.log("success");
         },
-        (error) => {
-          
-        }
+        (error) => {}
       );
   };
 
@@ -260,8 +258,7 @@ const Problems = ({ user, db }) => {
                   setQuery(
                     query(
                       collection(db, "Problems"),
-                      orderBy("ProblemId", "desc") &&
-                        where("ProblemType", "==", "SoftWare")
+                      where("ProblemType", "==", "SoftWare")
                     )
                   );
                   setSelestValue(eo.target.value);
@@ -271,8 +268,7 @@ const Problems = ({ user, db }) => {
                   setQuery(
                     query(
                       collection(db, "Problems"),
-                      orderBy("ProblemId", "desc") &&
-                        where("ProblemType", "==", "HardWare")
+                      where("ProblemType", "==", "HardWare")
                     )
                   );
                   setSelestValue(eo.target.value);
@@ -288,7 +284,8 @@ const Problems = ({ user, db }) => {
                   );
                   setSelestValue(eo.target.value);
                   setDisable(true);
-                } else {
+                }
+                if (eo.target.value === "Fonctionnalite") {
                   setDisable(false);
                   setQuery(
                     query(
@@ -322,7 +319,7 @@ const Problems = ({ user, db }) => {
                   ? "ne Compléte pas"
                   : "غير المكتملة "}{" "}
               </option>
-              <option value="HardWare">
+              <option value="Fonctionnalite">
                 {" "}
                 {i18n.language === "en"
                   ? "Fonctionnalite"
@@ -381,8 +378,7 @@ const Problems = ({ user, db }) => {
                       TecEmailForm(eo);
                       setModelShow(false);
                     }, 1000);
-                    setTimeout(() => {
-                    }, 1500);
+                    setTimeout(() => {}, 1500);
                   }}
                 >
                   {/* Date RendezVous */}
@@ -508,7 +504,8 @@ const Problems = ({ user, db }) => {
               return (
                 <div className="Parent">
                   <div
-                    className="Problem" key={i}
+                    className="Problem"
+                    key={i}
                     onClick={() => {
                       setidU(item.data().ProblemId);
                       setemail(item.data().email);
@@ -524,11 +521,19 @@ const Problems = ({ user, db }) => {
                         boxShadow: "0px 0px 3px 3px whitesmoke",
                         borderRadius: "5px",
                       }}
-                      href={item.data().PhoteProblem ? item.data().PhoteProblem : "https://firebasestorage.googleapis.com/v0/b/pourresoudreproblem.appspot.com/o/Screenshot%202023-08-17%20200400.png?alt=media&token=3e661cb4-dbc5-4486-8ea0-2f177b77127d" }
+                      href={
+                        item.data().PhoteProblem
+                          ? item.data().PhoteProblem
+                          : "https://firebasestorage.googleapis.com/v0/b/pourresoudreproblem.appspot.com/o/Screenshot%202023-08-17%20200400.png?alt=media&token=3e661cb4-dbc5-4486-8ea0-2f177b77127d"
+                      }
                       target="_blank|_self|_parent|_top|framename"
                     >
                       <img
-                        src={item.data().PhoteProblem ? item.data().PhoteProblem : "https://firebasestorage.googleapis.com/v0/b/pourresoudreproblem.appspot.com/o/Screenshot%202023-08-17%20200400.png?alt=media&token=3e661cb4-dbc5-4486-8ea0-2f177b77127d"}
+                        src={
+                          item.data().PhoteProblem
+                            ? item.data().PhoteProblem
+                            : "https://firebasestorage.googleapis.com/v0/b/pourresoudreproblem.appspot.com/o/Screenshot%202023-08-17%20200400.png?alt=media&token=3e661cb4-dbc5-4486-8ea0-2f177b77127d"
+                        }
                         className="img-thumbnail"
                         alt=""
                         width={290}

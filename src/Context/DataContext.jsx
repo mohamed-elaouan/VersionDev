@@ -1,8 +1,14 @@
 import { createContext, useReducer } from "react";
+// @ts-ignore
 const ThemeContexttt = createContext();
 
 const initialData = {
-  theme: localStorage.getItem("Theme") == null ? "Light" : localStorage.getItem("Theme")==="Dark"?"Dark":"Light",
+  theme:
+    localStorage.getItem("Theme") == null
+      ? "Light"
+      : localStorage.getItem("Theme") === "Dark"
+      ? "Dark"
+      : "Light",
 };
 const reducer = (firstState, action) => {
   switch (action.type) {
@@ -18,6 +24,7 @@ export function ThemeProvider({ children }) {
 
   const CHANGE_theme = (newtheme) => {
     localStorage.setItem("Theme", newtheme);
+    // @ts-ignore
     dispatch({ type: "CHANGE_theme", newValue: newtheme });
   };
 
