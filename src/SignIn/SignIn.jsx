@@ -129,6 +129,7 @@ const SignIn = () => {
                   .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+
                     seterror(errorCode);
                   });
                 setLodingAnimate(false);
@@ -143,7 +144,7 @@ const SignIn = () => {
                   width={25}
                 />
               ) : (
-                <span >Login</span>
+                <span>Login</span>
               )}
             </button>
 
